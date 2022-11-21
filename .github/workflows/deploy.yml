@@ -1,0 +1,39 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  deploy-to-github-pages:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Submodules init
+      uses: snickerbockers/submodules-init@v4
+    
+    - name: Setup node
+      uses: actions/setup-node@v3
+      with:
+        node-version: 16
+        cache: 'npm'
+        
+    - name: Install vue
+      run: npm install vue
+    
+    - name: Run build
+      run: npm run build
+    
+    - name: Add .nojekyll file
+      run: touch dist/.nojekyll
+      
+    - name: Add new files to git
+      run: git add .
+      
+    - name: Commit to GitHub Pages
+      uses: JamesIves/github-pages-deploy-action@3.7.1
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: gh-pages
+        folder: dist
