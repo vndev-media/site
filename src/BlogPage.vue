@@ -24,3 +24,11 @@ export default {
   }
 }
 </script>
+
+<style>
+blockquote p {
+  background: rgb(0,0,0);
+  background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 0.5%, rgba(0,212,255,0) 100%);
+  padding-left: 10px;
+}
+</style>
