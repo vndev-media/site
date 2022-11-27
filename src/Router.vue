@@ -1,7 +1,7 @@
 <script>
-import Home from "@/Home.vue";
-import Blog from "@/Blog.vue";
-import BlogPage from "@/BlogPage.vue";
+import Home from "./Home.vue";
+import Blog from "./Blog.vue";
+import BlogPage from "./BlogPage.vue";
 
 import {createWebHistory} from "vue-router";
 

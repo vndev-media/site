@@ -1,8 +1,11 @@
 name: Deploy to GitHub Pages
 
 on:
-  push:
-    branches: [ "main" ]
+  workflow_run:
+    workflows: ["Unit Test"]
+    types: [requested]
+    branches:
+      - 'main'
 
 jobs:
   deploy-to-github-pages:

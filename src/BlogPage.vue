@@ -9,7 +9,10 @@ import { marked } from 'marked'
 export default {
   name: "BlogPage",
   data() {
-    return { content: null }
+    return {
+      content: null,
+      page: this.$route.params.page
+    }
   },
   computed: {
     md2HTML() {
@@ -17,10 +20,15 @@ export default {
     }
   },
   async created() {
-    const page = this.$route.params.page;
-    let response = await fetch( page + '.md');
-    let responseText = await response.text();
-    this.content = await marked(responseText);
+    if (this.page.length > 0) {
+      let response = await fetch(this.page + '.md');
+      let responseText = await response.text();
+      this.content = await marked(responseText);
+    }
+    else {
+      this.content = await marked("# Undefined page!");
+    }
+    console.log(this.content);
   }
 }
 </script>

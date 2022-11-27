@@ -1,0 +1,26 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  deploy-to-github-pages:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Submodules init
+      uses: snickerbockers/submodules-init@v4
+
+    - name: Setup node
+      uses: actions/setup-node@v3
+      with:
+        node-version: 16
+        cache: 'npm'
+
+    - name: Install vue
+      run: npm install vue
+
+    - name: Run unit tests
+      run: npm run test:unit
