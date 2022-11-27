@@ -1,11 +1,11 @@
-name: Deploy to GitHub Pages
+name: Run Unit Tests
 
 on:
   push:
     branches: [ "main" ]
 
 jobs:
-  deploy-to-github-pages:
+  run-unit-tests:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
