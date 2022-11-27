@@ -19,8 +19,8 @@ jobs:
         node-version: 16
         cache: 'npm'
 
-    - name: Install vue
-      run: npm install vue
+    - name: Install deps
+      run: npm install vue @babel/preset-env
 
     - name: Run unit tests
       run: npm run test:unit
